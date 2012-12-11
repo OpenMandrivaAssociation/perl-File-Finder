@@ -1,20 +1,20 @@
 %define upstream_name    File-Finder
 %define upstream_version 0.53
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Steps for File::Finder
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/File/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Steps for File::Finder
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/File/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Text::Glob)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Text::Glob)
+BuildArch:	noarch
 
 %description
 'File::Find' is great, but constructing the 'wanted' routine can sometimes
@@ -38,24 +38,26 @@ head of many different sequences.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes META.yml README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
 
+%changelog
+* Sat Apr 16 2011 Funda Wang <fwang@mandriva.org> 0.530.0-2mdv2011.0
++ Revision: 653595
+- rebuild for updated spec-helper
+
+* Wed Aug 25 2010 Jérôme Quelin <jquelin@mandriva.org> 0.530.0-1mdv2011.0
++ Revision: 573149
+- import perl-File-Finder
 
