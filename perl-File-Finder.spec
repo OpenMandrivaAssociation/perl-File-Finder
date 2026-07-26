@@ -1,15 +1,13 @@
 %define upstream_name    File-Finder
-%define upstream_version 0.53
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	0.53
+Release:	6
 
 Summary:	Steps for File::Finder
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/File/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/File/%{upstream_name}-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -36,7 +34,7 @@ Furthermore, a partial sequence can be created and held, and used as the
 head of many different sequences.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
