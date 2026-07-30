@@ -1,13 +1,14 @@
 %define upstream_name    File-Finder
+%define upstream_version 1.01
 Name:		perl-%{upstream_name}
-Version:	0.53
-Release:	6
+Version:	1.01
+Release:	1
 
 Summary:	Steps for File::Finder
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/File/%{upstream_name}-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/M/ME/MERLYN/File-Finder-1.01.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -50,13 +51,4 @@ perl Makefile.PL INSTALLDIRS=vendor
 %doc Changes META.yml README
 %{_mandir}/man3/*
 %{perl_vendorlib}/*
-
-%changelog
-* Sat Apr 16 2011 Funda Wang <fwang@mandriva.org> 0.530.0-2mdv2011.0
-+ Revision: 653595
-- rebuild for updated spec-helper
-
-* Wed Aug 25 2010 Jérôme Quelin <jquelin@mandriva.org> 0.530.0-1mdv2011.0
-+ Revision: 573149
-- import perl-File-Finder
 
